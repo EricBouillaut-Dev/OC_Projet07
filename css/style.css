@@ -1,12 +1,12 @@
 *{
     box-sizing: border-box;
-    margin: 0 auto;
+    margin: 0;
     font-family: "Lato", sans-serif;
 
 }
 html {
     min-width: 350px;
-    max-width: 1400px;
+    /* max-width: 1400px; */
     margin: 1rem;
     --title:#d04f4f;
     --primary: #3282f7;
@@ -14,6 +14,7 @@ html {
     --tertiary: #ed6454;
     --gray: #adadad;
     --lightGray: #e7e7e7;
+    --darkGray: #c7bebe;
 
 }
 
@@ -24,6 +25,9 @@ header {
     align-items: center;
     font-family: "DM Sans", sans-serif;
     padding: 2rem 0 1rem 0;
+}
+.search-section{
+    margin: 0 1.5rem;
 }
 h1{
     /* margin: 0; */
@@ -53,6 +57,9 @@ input{
 .fa-solid.fa-magnifying-glass{
     font-size: 1.8rem;
     /* font-weight: bold; */
+}
+.tag-container{
+    margin: 0 1.5rem;
 }
 .tag{
     display: flex;
@@ -95,6 +102,9 @@ input{
     /* justify-content: left; */
     /* flex-direction: column; */
 
+}
+.dropdown-container{
+    margin: 0 1.5rem;
 }
 .bloc-ingredients,
 .bloc-appareils,
@@ -142,4 +152,76 @@ input{
     justify-content: space-between;
     margin: 0;
     padding: 0;
+}
+.recipes-section{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.recipe-card{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin: 0.5rem;
+    /* height: 360px; */
+}
+.recipe-info-up{
+    width: 380px;
+    height: 180px;
+    background-color: var(--darkGray);
+    border-radius: 5px 5px 0 0;
+}
+.recipe-info-middle{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    background-color: var(--lightGray);
+    /* margin: 0; */
+    padding: 1rem 1rem 0 1rem;
+    width: 380px;
+}
+.recipe-info-down{
+    display: flex;
+    justify-content: space-between;
+    width: 380px;
+    height: 150px;
+    padding: 1rem;
+    background-color: var(--lightGray);
+    border-radius: 0 0 5px 5px;
+}
+.recipe-info-right{
+    width: 50%;
+    font-size: 12px;
+}
+.recipe-info-left{
+    font-size: 12px;
+    /* font-weight: bold; */
+}
+.recipe-name{
+    font-size: 18px;
+    font-weight: normal;
+    /* flex-basis: 50%; */
+}
+.recipe-description{
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    width: 170px;
+
+}
+.recipe-time{
+    font-size: 18px;
+    font-weight: bold;
+    width: 30%;
+    text-align: right;
+}
+.recipe-time::before{
+    content: '\f017';
+    font-family: "Font Awesome 5 Free";
+    font-weight: normal;
+    /* font-style: bold; */
+    padding-right: 0.3rem;
 }
