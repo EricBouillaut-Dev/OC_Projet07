@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="assets/logo/logo.png">
+    <link
+        href="https://fonts.googleapis.com/css?family=Lato:wght@100;300;400;700;900&family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8c5af481df.js" crossorigin="anonymous"></script>
+    <title>Les Petits Plats</title>
+</head>
+
+<body>
+    <header>
+        <img alt="logo" src="./assets/logo/logo.png">
+        <h1>Les petits plats</h1>
+    </header>
+    <main>
+        <section role="region" aria-label="Recherche de recette">
+            <form action="#">
+                <input type="text" id="search" placeholder="Rechercher une recette">
+                <label for="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </label>
+            </form>
+        </section>
+        <section class="tag-container" role="region" aria-label="Tags">
+            <!-- <article class="tag-ingredients"> -->
+
+            <button class="tag ingredients">
+                <p>Coco</p>
+                <span class="cancel">
+                    <i class="fa fa-times"></i>
+                </span>
+            </button>
+            <button class="tag appareils">
+                <p>Blender</p>
+                <span class="cancel">
+                    <i class="fa fa-times"></i>
+                </span>
+            </button>
+            <button class="tag ustensiles">
+                <p>Couteau</p>
+                <span class="cancel">
+                    <i class="fa fa-times"></i>
+                </span>
+            </button>
+
+
+            <!-- </article> -->
+
+
+        </section>
+        <section class="dropdown-container">
+            <!-- <label for="sort-images-select">Ingredients</label> -->
+            <div class="dropdown">
+                <article class="bloc-ingredients">
+                    <button id="button-ingredients" aria-haspopup="listbox" aria-expanded="false"
+                        aria-labelledby="sort-images-select">
+                        Ingredients<i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <ul id="list-ingredients" role="listbox" aria-activedescendant="option1"
+                        aria-labelledby="sort-images-select">
+                        <li id="option1" role="option" tabindex="0" data-value="likes" aria-selected="true">test1</li>
+                        <li id="option2" role="option" tabindex="0" data-value="date" aria-selected="false">test2</li>
+                        <li id="option3" role="option" tabindex="0" data-value="title" aria-selected="false">test3</li>
+                    </ul>
+                </article>
+                <article class="bloc-appareils">
+                    <button id="button-appareils" aria-haspopup="listbox" aria-expanded="false"
+                        aria-labelledby="sort-images-select">
+                        Appareils<i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <ul id="list-appareils" role="listbox" aria-activedescendant="option1"
+                        aria-labelledby="sort-images-select">
+                        <li id="option1" role="option" tabindex="0" data-value="likes" aria-selected="true">test1</li>
+                        <li id="option2" role="option" tabindex="0" data-value="date" aria-selected="false">test2</li>
+                        <li id="option3" role="option" tabindex="0" data-value="title" aria-selected="false">test3</li>
+                    </ul>
+                </article>
+                <article class="bloc-ustensiles">
+                    <button id="button-ustensiles" aria-haspopup="listbox" aria-expanded="false"
+                        aria-labelledby="sort-images-select">
+                        Ustensiles<i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <ul id="list-ustensiles" role="listbox" aria-activedescendant="option1"
+                        aria-labelledby="sort-images-select">
+                        <li id="option1" role="option" tabindex="0" data-value="likes" aria-selected="true">test1</li>
+                        <li id="option2" role="option" tabindex="0" data-value="date" aria-selected="false">test2</li>
+                        <li id="option3" role="option" tabindex="0" data-value="title" aria-selected="false">tes3</li>
+                    </ul>
+                </article>
+            </div>
+
+
+        </section>
+
+
+    </main>
+</body>
+
+<footer>
+</footer>
+
+</html>

@@ -1,0 +1,145 @@
+*{
+    box-sizing: border-box;
+    margin: 0 auto;
+    font-family: "Lato", sans-serif;
+
+}
+html {
+    min-width: 350px;
+    max-width: 1400px;
+    margin: 1rem;
+    --title:#d04f4f;
+    --primary: #3282f7;
+    --secondary: #68d9a4;
+    --tertiary: #ed6454;
+    --gray: #adadad;
+    --lightGray: #e7e7e7;
+
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "DM Sans", sans-serif;
+    padding: 2rem 0 1rem 0;
+}
+h1{
+    /* margin: 0; */
+    color: var(--title);
+}
+form{
+    position: relative;
+}
+label{
+    position: absolute;
+    top: 1.2rem;
+    right: 1rem;
+}
+input{
+    width: 100%;
+    height: 4.3rem;
+    font-size: 1.15rem;
+    padding-left: 1.5rem;
+    border-radius: 5px;
+    background-color: var(--lightGray);
+    border: none;
+    /* font-family: "Lato", sans-serif; */
+}
+::placeholder{
+    opacity: 0.5;
+}
+.fa-solid.fa-magnifying-glass{
+    font-size: 1.8rem;
+    /* font-weight: bold; */
+}
+.tag{
+    display: flex;
+    margin: 1rem 0;
+    /* justify-content: left; */
+    align-items: center;
+    height: 2rem;
+    padding: 1rem;
+    /* padding-right: 1rem; */
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+.tag p{
+    padding-right: 1rem;
+    font-size: 0.9rem;
+}
+.ingredients{
+    background-color: var(--primary);
+}
+.appareils{
+    background-color: var(--secondary);
+}
+.ustensiles{
+    background-color: var(--tertiary);
+}
+.cancel {
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* padding-left: 1rem; */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: inherit;
+    border: 2px solid white;
+  }
+.dropdown{
+    display: flex;
+    /* justify-content: left; */
+    /* flex-direction: column; */
+
+}
+.bloc-ingredients,
+.bloc-appareils,
+.bloc-ustensiles {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+#button-ingredients,
+#button-appareils,
+#button-ustensiles {
+    display: flex;
+    /* flex-direction: column; */
+    margin: 0 1rem 0 0;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 1rem;
+    /* padding-right: 1rem; */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    
+    font-size: 1.2rem;
+    width: 170px;
+}
+.fa.fa-chevron-down{
+    /* padding-right: 1rem; */
+    margin: 0;
+}
+#button-ingredients{
+    background-color: var(--primary);
+}
+#button-appareils{
+    background-color: var(--secondary);
+}
+#button-ustensiles{
+    background-color: var(--tertiary);
+}
+
+#list-ingredients,
+#list-appareils,
+#list-ustensiles {
+    display: none;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
