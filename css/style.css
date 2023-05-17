@@ -103,16 +103,15 @@ form input{
 .dropdown-container{
     margin: 0 1.5rem;
 }
-.bloc-ingredients,
-.bloc-appareils,
-.bloc-ustensils {
+.dropdown article {
     position: relative;
     display: flex;
     flex-direction: column;
-    margin: 0;
+    /* margin: 0; */
+    margin-right: 1rem;
+    /* width: 170px; */
 }
 .dropdown input {
-    /* position: relative; */
     display: flex;
     margin: 0 1rem 0 0;
     justify-content: space-between;
@@ -124,7 +123,8 @@ form input{
     border-radius: 5px;
     font-size: 18px;
     width: 170px;
-    transition: width 0.3s ease-out;
+    transition: width 0.2s ease-out;
+    /* transition-delay: 0.2s; */
     cursor: pointer;
 }
 
@@ -132,30 +132,14 @@ form input{
     position: absolute;
     top: 28px;
     right: 2rem;
-    /* transform: translateY(-50%); */
     content: "\f078";
     font-family: "FontAwesome";
     font-size: 1rem;
-    transition: transform 0.3s ease-out;
     display: inline-block;
     color: white;
     cursor: pointer;
     pointer-events: none;
 }
-
-
-/* .dropdown input::after {
-    content: "\f078";
-    font-family: "FontAwesome";
-    position: absolute;
-    right: 0.5rem;
-    font-size: 1rem;
-    transition: transform 0.3s ease-out;
-}
-.dropdown input.active::after {
-    transform: rotate(180deg);
-} */
-
 .dropdown input::placeholder {
     opacity: 1;
     color: white;
@@ -174,48 +158,33 @@ form input{
 .button-ustensils{
     background-color: var(--tertiary);
 }
-.button-ingredients:focus,
-.button-appareils:focus,
-.button-ustensils:focus {
+.dropdown input:focus {
     outline: none;
     border-radius: 5px 5px 0 0;
 }
-
-
-.button-ingredients.active + .dropdown-chevron::before,
-.button-appareils.active + .dropdown-chevron::before,
-.button-ustensils.active + .dropdown-chevron::before {
+.dropdown input.active + .dropdown-chevron::before {
     transform: rotate(180deg);
-
 }
-
-.button-ingredients.active,
-.button-appareils.active,
-.button-ustensils.active {
+.dropdown input.active {
     width: 650px;
-    transition: width 0.3s ease-out;
+    transition: width 0.2s ease-out;
 }
 
-
-
-
-.dropdown ul {
+/* .dropdown ul {
     display: none;
     justify-content: space-between;
     margin: 0;
     padding: 0;
-}
-.dropdown ul.active{
-    display: flex;
-}
+    border-radius: 0 0 5px 5px;
+} */
 
-.list-ingredients,
-.list-appareils,
-.list-ustensils {
+.dropdown ul {
+    position: absolute;
+    top: 70px;
+    display: none;
     width: 650px;
     max-height: 400px;
     overflow-y: auto;
-    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-content: flex-start;
@@ -223,7 +192,38 @@ form input{
     color: white;
     font-size: 18px;
     font-weight: 400;
+    /* transition: max-height 0.2s ease-out; */
+    /* transition-delay: 0.2s; */
 }
+.dropdown ul::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dropdown ul::-webkit-scrollbar-track {
+    background-color: inherit;
+}
+
+.dropdown ul::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 4px;
+}
+
+.dropdown ul::-webkit-scrollbar-thumb:hover {
+    background-color: #ddd;
+}
+
+
+
+
+
+
+.dropdown ul.active{
+    display: flex;
+    /* max-height: 400px; */
+    /* transition: max-height 0.2s ease-out; */
+    /* transition-delay: 0.2s; */
+}
+
 
 .list-ingredients{
     background-color: var(--primary);
