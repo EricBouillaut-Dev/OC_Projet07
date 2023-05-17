@@ -18,7 +18,7 @@
         <img alt="logo" src="./assets/logo/logo.png">
         <h1>Les petits plats</h1>
     </header>
-    <main>
+    <main id="main">
         <section class="search-section" role="region" aria-label="Recherche de recette">
             <form action="#">
                 <input type="text" id="search" placeholder="Rechercher une recette">
@@ -42,7 +42,7 @@
                     <i class="fa fa-times"></i>
                 </span>
             </button>
-            <button class="tag ustensiles">
+            <button class="tag ustensils">
                 <p>Couteau</p>
                 <span class="cancel">
                     <i class="fa fa-times"></i>
@@ -58,40 +58,19 @@
             <!-- <label for="sort-images-select">Ingredients</label> -->
             <div class="dropdown">
                 <article class="bloc-ingredients">
-                    <button id="button-ingredients" aria-haspopup="listbox" aria-expanded="false"
-                        aria-labelledby="sort-images-select">
-                        Ingredients<i class="fa fa-chevron-down" aria-hidden="true"></i>
-                    </button>
-                    <ul id="list-ingredients" role="listbox" aria-activedescendant="option1"
-                        aria-labelledby="sort-images-select">
-                        <li id="option1" role="option" tabindex="0" data-value="likes" aria-selected="true">test1</li>
-                        <li id="option2" role="option" tabindex="0" data-value="date" aria-selected="false">test2</li>
-                        <li id="option3" role="option" tabindex="0" data-value="title" aria-selected="false">test3</li>
-                    </ul>
+                    <input type="text" class="button-ingredients" placeholder="Ingredients">
+                    <span class="dropdown-chevron"></span>
+                    <ul class="list-ingredients"></ul>
                 </article>
                 <article class="bloc-appareils">
-                    <button id="button-appareils" aria-haspopup="listbox" aria-expanded="false"
-                        aria-labelledby="sort-images-select">
-                        Appareils<i class="fa fa-chevron-down" aria-hidden="true"></i>
-                    </button>
-                    <ul id="list-appareils" role="listbox" aria-activedescendant="option1"
-                        aria-labelledby="sort-images-select">
-                        <li id="option1" role="option" tabindex="0" data-value="likes" aria-selected="true">test1</li>
-                        <li id="option2" role="option" tabindex="0" data-value="date" aria-selected="false">test2</li>
-                        <li id="option3" role="option" tabindex="0" data-value="title" aria-selected="false">test3</li>
-                    </ul>
+                    <input type="text" class="button-appareils" placeholder="Appareils">
+                    <span class="dropdown-chevron"></span>
+                    <ul class="list-appareils"></ul>
                 </article>
-                <article class="bloc-ustensiles">
-                    <button id="button-ustensiles" aria-haspopup="listbox" aria-expanded="false"
-                        aria-labelledby="sort-images-select">
-                        Ustensiles<i class="fa fa-chevron-down" aria-hidden="true"></i>
-                    </button>
-                    <ul id="list-ustensiles" role="listbox" aria-activedescendant="option1"
-                        aria-labelledby="sort-images-select">
-                        <li id="option1" role="option" tabindex="0" data-value="likes" aria-selected="true">test1</li>
-                        <li id="option2" role="option" tabindex="0" data-value="date" aria-selected="false">test2</li>
-                        <li id="option3" role="option" tabindex="0" data-value="title" aria-selected="false">tes3</li>
-                    </ul>
+                <article class="bloc-ustensils">
+                    <input type="text" class="button-ustensils" placeholder="Ustensils">
+                    <span class="dropdown-chevron"></span>
+                    <ul class="list-ustensils"></ul>
                 </article>
             </div>
 
@@ -105,6 +84,7 @@
     </main>
     <script src="scripts/data/recipes.js"></script>
     <script src="scripts/factories/recettes.js"></script>
+    <script src="scripts/utils/search.js"></script>
     <script src="scripts/pages/index.js"></script>
 </body>
 

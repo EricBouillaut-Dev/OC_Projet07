@@ -41,7 +41,7 @@ label{
     top: 1.2rem;
     right: 1rem;
 }
-input{
+form input{
     width: 100%;
     height: 4.3rem;
     font-size: 1.15rem;
@@ -83,7 +83,7 @@ input{
 .appareils{
     background-color: var(--secondary);
 }
-.ustensiles{
+.ustensils{
     background-color: var(--tertiary);
 }
 .cancel {
@@ -99,63 +99,153 @@ input{
   }
 .dropdown{
     display: flex;
-    /* justify-content: left; */
-    /* flex-direction: column; */
-
 }
 .dropdown-container{
     margin: 0 1.5rem;
 }
 .bloc-ingredients,
 .bloc-appareils,
-.bloc-ustensiles {
+.bloc-ustensils {
+    position: relative;
     display: flex;
     flex-direction: column;
     margin: 0;
 }
-#button-ingredients,
-#button-appareils,
-#button-ustensiles {
+.dropdown input {
+    /* position: relative; */
     display: flex;
-    /* flex-direction: column; */
     margin: 0 1rem 0 0;
     justify-content: space-between;
     align-items: center;
     height: 70px;
     padding: 1rem;
-    /* padding-right: 1rem; */
     color: white;
     border: none;
     border-radius: 5px;
-    
-    font-size: 1.2rem;
+    font-size: 18px;
     width: 170px;
-}
-.fa.fa-chevron-down{
-    /* padding-right: 1rem; */
-    margin: 0;
-}
-#button-ingredients{
-    background-color: var(--primary);
-}
-#button-appareils{
-    background-color: var(--secondary);
-}
-#button-ustensiles{
-    background-color: var(--tertiary);
+    transition: width 0.3s ease-out;
+    cursor: pointer;
 }
 
-#list-ingredients,
-#list-appareils,
-#list-ustensiles {
+.dropdown-chevron::before {
+    position: absolute;
+    top: 28px;
+    right: 2rem;
+    /* transform: translateY(-50%); */
+    content: "\f078";
+    font-family: "FontAwesome";
+    font-size: 1rem;
+    transition: transform 0.3s ease-out;
+    display: inline-block;
+    color: white;
+    cursor: pointer;
+    pointer-events: none;
+}
+
+
+/* .dropdown input::after {
+    content: "\f078";
+    font-family: "FontAwesome";
+    position: absolute;
+    right: 0.5rem;
+    font-size: 1rem;
+    transition: transform 0.3s ease-out;
+}
+.dropdown input.active::after {
+    transform: rotate(180deg);
+} */
+
+.dropdown input::placeholder {
+    opacity: 1;
+    color: white;
+}
+.dropdown input.active::placeholder {
+    opacity: 0.5;
+    /* color: black; */
+}
+
+.button-ingredients{
+    background-color: var(--primary);
+}
+.button-appareils{
+    background-color: var(--secondary);
+}
+.button-ustensils{
+    background-color: var(--tertiary);
+}
+.button-ingredients:focus,
+.button-appareils:focus,
+.button-ustensils:focus {
+    outline: none;
+    border-radius: 5px 5px 0 0;
+}
+
+
+.button-ingredients.active + .dropdown-chevron::before,
+.button-appareils.active + .dropdown-chevron::before,
+.button-ustensils.active + .dropdown-chevron::before {
+    transform: rotate(180deg);
+
+}
+
+.button-ingredients.active,
+.button-appareils.active,
+.button-ustensils.active {
+    width: 650px;
+    transition: width 0.3s ease-out;
+}
+
+
+
+
+.dropdown ul {
     display: none;
     justify-content: space-between;
     margin: 0;
     padding: 0;
 }
+.dropdown ul.active{
+    display: flex;
+}
+
+.list-ingredients,
+.list-appareils,
+.list-ustensils {
+    width: 650px;
+    max-height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    list-style-type: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.list-ingredients{
+    background-color: var(--primary);
+}
+.list-appareils{
+    background-color: var(--secondary);
+}
+.list-ustensils{
+    background-color: var(--tertiary);
+}
+
+.list-ingredients li,
+.list-appareils li,
+.list-ustensils li {
+    width: 33%;
+    padding: 0.5rem;
+    /* align-content: center; */
+
+}
+    
 .recipes-section{
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
 }
 .recipe-card{
@@ -179,6 +269,7 @@ input{
     /* margin: 0; */
     padding: 1rem 1rem 0 1rem;
     width: 380px;
+    /* height: 40px; */
 }
 .recipe-info-down{
     display: flex;

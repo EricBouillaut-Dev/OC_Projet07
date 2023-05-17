@@ -4,7 +4,6 @@ function recipeFactory(data) {
     function getRecipeCardDOM() {
         const article = document.createElement('article');
         const ingredientsList = ingredients.map(ingredient => {
-            console.log(ingredient.unit);
             let ingredientText = `<b>${ingredient.ingredient}</b>`;
             if (ingredient.quantity) {
                 if (ingredient.unit) {
