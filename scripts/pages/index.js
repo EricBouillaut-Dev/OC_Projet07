@@ -13,7 +13,7 @@ function createTag(text, type) {
     if (!isTagSelected) {
       tagContainer.appendChild(buttonTag);
       tags[type].push(text);
-      searchRecipes('', tags);
+      searchRecipes(currentSearch, tags);
     }}
 
 function showDropdownDatas(dropdownButton, data) {
@@ -45,8 +45,8 @@ let tags = {
     appareils: [],
     ustensils: []
 };
-
-searchRecipes('',tags);
+let currentSearch = '';
+searchRecipes(currentSearch,tags);
 
 const searchInput = document.getElementById('search');
 searchInput.addEventListener('input', function(event) {
@@ -93,6 +93,6 @@ main.addEventListener('click', event => {
             }
         }
         event.target.parentElement.remove();
-        searchRecipes('', tags);
+        searchRecipes(currentSearch, tags);
     }
 });

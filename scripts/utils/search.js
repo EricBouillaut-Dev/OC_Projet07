@@ -105,6 +105,7 @@ function updateRecipes(recipes) {
 }
 
 function searchRecipes(searchTerm, tags) {
+    currentSearch = searchTerm;
     // Filtrer les recettes correspondant à la recherche
     if (
         searchTerm.length < 3 &&
