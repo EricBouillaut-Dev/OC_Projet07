@@ -7,7 +7,6 @@ function createTag(text, type) {
     buttonTag.innerHTML = `
         <div>${text}</div>
         <span class="cancel">
-            <i class="fa fa-times"></i>
         </span>
     `;
     const isTagSelected = tags[type].includes(text);
@@ -71,5 +70,29 @@ main.addEventListener('click', event => {
         const tagText = event.target.innerText;
         const type = event.target.parentElement.classList[0].replace('list-', '');
         createTag(tagText, type);
+    }
+
+    if (event.target.className === 'cancel') {
+        const tagToRemove = event.target.parentElement.firstElementChild.innerText;
+
+        // Vérifier la classe du parent pour déterminer la propriété correspondante de tags
+        if (event.target.parentElement.classList.contains('ingredients')) {
+            const tagIndex = tags.ingredients.indexOf(tagToRemove);
+            if (tagIndex !== -1) {
+                tags.ingredients.splice(tagIndex, 1);
+            }
+        } else if (event.target.parentElement.classList.contains('appareils')) {
+            const tagIndex = tags.appareils.indexOf(tagToRemove);
+            if (tagIndex !== -1) {
+                tags.appareils.splice(tagIndex, 1);
+            }
+        } else if (event.target.parentElement.classList.contains('ustensils')) {
+            const tagIndex = tags.ustensils.indexOf(tagToRemove);
+            if (tagIndex !== -1) {
+                tags.ustensils.splice(tagIndex, 1);
+            }
+        }
+        event.target.parentElement.remove();
+        searchRecipes('', tags);
     }
 });
