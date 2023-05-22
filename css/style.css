@@ -10,8 +10,11 @@ html {
     margin: 1rem;
     --title:#d04f4f;
     --primary: #3282f7;
+    --primaryDark: #2d6dcc;
     --secondary: #68d9a4;
+    --secondaryDark: #5ab88c;
     --tertiary: #ed6454;
+    --tertiaryDark: #c25549;
     --gray: #adadad;
     --lightGray: #e7e7e7;
     --darkGray: #c7bebe;
@@ -59,11 +62,18 @@ form input{
     /* font-weight: bold; */
 }
 .tag-container{
-    margin: 0 1.5rem;
+    margin: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.tag-container article{
+    display: flex;
+    gap: 1rem;
 }
 .tag{
     display: flex;
-    margin: 1rem 0;
+    /* margin: 1rem 0; */
     /* justify-content: left; */
     align-items: center;
     height: 2rem;
@@ -73,7 +83,7 @@ form input{
     border: none;
     border-radius: 5px;
 }
-.tag p{
+.tag div{
     padding-right: 1rem;
     font-size: 0.9rem;
 }
@@ -87,16 +97,22 @@ form input{
     background-color: var(--tertiary);
 }
 .cancel {
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: center; */
-    /* padding-left: 1rem; */
     width: 20px;
     height: 20px;
     border-radius: 50%;
     background-color: inherit;
     border: 2px solid white;
-  }
+}
+.cancel {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: inherit;
+    border: 2px solid white;
+}
+
+
+
 .dropdown{
     display: flex;
 }
@@ -219,15 +235,26 @@ form input{
 
 .dropdown ul.active{
     display: flex;
+    z-index: 1;
     /* max-height: 400px; */
     /* transition: max-height 0.2s ease-out; */
     /* transition-delay: 0.2s; */
 }
 
+.recipes-found{
+    position: relative;
+    margin-top: 1rem;
+}
+.recipes-count{
+    position: absolute;
+    margin-left: 1.5rem;
+    /* color: var(--title); */
+}
 
 .list-ingredients{
     background-color: var(--primary);
 }
+
 .list-appareils{
     background-color: var(--secondary);
 }
@@ -240,8 +267,23 @@ form input{
 .list-ustensils li {
     width: 33%;
     padding: 0.5rem;
-    /* align-content: center; */
+}
+.list-ingredients li:hover{
+    background-color: var(--primaryDark);
+    cursor: pointer;
+    border-radius: 5px;
+}
 
+.list-appareils li:hover{
+    background-color: var(--secondaryDark);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.list-ustensils li:hover {
+    background-color: var(--tertiaryDark);
+    cursor: pointer;
+    border-radius: 5px;
 }
     
 .recipes-section{
