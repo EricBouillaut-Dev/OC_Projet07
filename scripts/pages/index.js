@@ -73,26 +73,26 @@ main.addEventListener('click', event => {
     }
 
     if (event.target.className === 'cancel') {
-        const tagToRemove = event.target.parentElement.firstElementChild.innerText;
-
+        const parentTag = event.target.parentElement;
+        const tagToRemove = parentTag.firstElementChild.innerText;
         // Vérifier la classe du parent pour déterminer la propriété correspondante de tags
-        if (event.target.parentElement.classList.contains('ingredients')) {
+        if (parentTag.classList.contains('ingredients')) {
             const tagIndex = tags.ingredients.indexOf(tagToRemove);
             if (tagIndex !== -1) {
                 tags.ingredients.splice(tagIndex, 1);
             }
-        } else if (event.target.parentElement.classList.contains('appareils')) {
+        } else if (parentTag.classList.contains('appareils')) {
             const tagIndex = tags.appareils.indexOf(tagToRemove);
             if (tagIndex !== -1) {
                 tags.appareils.splice(tagIndex, 1);
             }
-        } else if (event.target.parentElement.classList.contains('ustensils')) {
+        } else if (parentTag.classList.contains('ustensils')) {
             const tagIndex = tags.ustensils.indexOf(tagToRemove);
             if (tagIndex !== -1) {
                 tags.ustensils.splice(tagIndex, 1);
             }
         }
-        event.target.parentElement.remove();
+        parentTag.remove();
         searchRecipes(currentSearch, tags);
     }
 });
