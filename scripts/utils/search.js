@@ -59,10 +59,11 @@ function updateUstensilList(recipes) {
 function updateRecipes(recipes) {
     const recipesCount = recipes.length;
     const recipesCountText = document.querySelector('.recipes-count');
-    if (recipesCount <= 1) {
-        recipesCountText.innerHTML = `<b>${recipesCount}</b> recette trouvée:`;
+    if (recipesCount < 1) {
+        recipesCountText.innerHTML = `Aucune recette ne correspond à votre critère… vous pouvez
+        chercher « tarte aux pommes », « poisson », etc`;
     } else {
-        recipesCountText.innerHTML = `<b>${recipesCount}</b> recettes trouvées:`;
+        recipesCountText.innerHTML = `<b>${recipesCount}</b> recette(s) trouvée(s):`;
     }
 
     // Mettre à jour la liste des recettes affichées
@@ -100,7 +101,9 @@ function updateRecipes(recipes) {
                 </div>
             </div>
         `;
+
         recipesSection.appendChild(article);
+
     });
 }
 
@@ -133,7 +136,7 @@ function searchRecipes(searchTerm, tags) {
                 return ingredient.ingredient.toLowerCase().includes(tag.toLowerCase());
             });
         });
-    
+
         const matchesAppliances = tags.appareils.every(function(tag) {
             return recipe.appliance.toLowerCase().includes(tag.toLowerCase());
         });
@@ -146,7 +149,7 @@ function searchRecipes(searchTerm, tags) {
     
         return matchesSearchTerm && matchesIngredients && matchesAppliances && matchesUstensils;
     });
-    
+
     // Mettre à jour les menus déroulants et la liste des ingrédients, appareils et ustensiles
     updateRecipes(matchingRecipes);
     updateIngredientList(matchingRecipes);
