@@ -1,4 +1,4 @@
-let searchTerm = 'jjj';
+let SearchItem = 'jjj';
 
 const recipes = [
     {

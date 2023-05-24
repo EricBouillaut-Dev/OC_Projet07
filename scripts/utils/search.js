@@ -107,11 +107,11 @@ function updateRecipes(recipes) {
     });
 }
 
-function searchRecipes(searchTerm, tags) {
-    currentSearch = searchTerm;
+function searchRecipes(SearchItem, tags) {
+    currentSearch = SearchItem;
     // Filtrer les recettes correspondant à la recherche
     if (
-        searchTerm.length < 3 &&
+        SearchItem.length < 3 &&
         tags.ingredients.length === 0 &&
         tags.appareils.length === 0 &&
         tags.ustensils.length === 0
@@ -121,16 +121,16 @@ function searchRecipes(searchTerm, tags) {
         updateApplianceList(recipes);
         updateUstensilList(recipes);
         return;
-      }
+    }
     const matchingRecipes = recipes.filter(function(recipe) {
-        let matchesSearchTerm = true;
-        if(searchTerm.length >=3){
-            matchesSearchTerm = (
-                recipe.name.toLowerCase().includes(searchTerm) ||
+        let matchesSearchItem = true;
+        if(SearchItem.length >=3){
+            matchesSearchItem = (
+                recipe.name.toLowerCase().includes(SearchItem) ||
                 recipe.ingredients.some(function(ingredient) {
-                    return ingredient.ingredient.toLowerCase().includes(searchTerm);
+                    return ingredient.ingredient.toLowerCase().includes(SearchItem);
                 }) ||
-                recipe.description.toLowerCase().includes(searchTerm)
+                recipe.description.toLowerCase().includes(SearchItem)
             );
         }
     
@@ -150,7 +150,7 @@ function searchRecipes(searchTerm, tags) {
             });
         });
     
-        return matchesSearchTerm && matchesIngredients && matchesAppliances && matchesUstensils;
+        return matchesSearchItem && matchesIngredients && matchesAppliances && matchesUstensils;
     });
 
     // Mettre à jour les menus déroulants et la liste des ingrédients, appareils et ustensiles

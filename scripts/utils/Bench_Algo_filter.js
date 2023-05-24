@@ -1,13 +1,13 @@
 const matchingRecipes = recipes.filter(function(recipe) {
-    let matchesSearchTerm = true;
-    if(searchTerm.length >=3){
-        matchesSearchTerm = (
-            recipe.name.toLowerCase().includes(searchTerm) ||
+    let matchesSearchItem = true;
+    if(SearchItem.length >=3){
+        matchesSearchItem = (
+            recipe.name.toLowerCase().includes(SearchItem) ||
             recipe.ingredients.some(function(ingredient) {
-                return ingredient.ingredient.toLowerCase().includes(searchTerm);
+                return ingredient.ingredient.toLowerCase().includes(SearchItem);
             }) ||
-            recipe.description.toLowerCase().includes(searchTerm)
+            recipe.description.toLowerCase().includes(SearchItem)
         );
     }
-             return matchesSearchTerm;
+             return matchesSearchItem;
 });
