@@ -343,6 +343,7 @@ form input{
     font-family: "Roboto", sans-serif;
     font-size: 12px;
     width: 170px;
+    background-color: var(--lightGray);
     transition: all 0.3s ease-out;
 
 }
@@ -355,7 +356,7 @@ form input{
     /* bottom: 50px; */
     height: auto;
     width: 400px;
-    background-color: var(--lightGray);
+    background-color: white;
     border: solid 1px;
     border-radius: 5px;
     font-size: 1rem;
