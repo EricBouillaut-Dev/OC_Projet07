@@ -1,9 +1,10 @@
 const matchingRecipes = recipes.filter(function(recipe) {
-    let matchesSearchItem = true;
+    const searchIngredients = recipe.ingredients.map(element => element.ingredient);
+    const fullSearch = recipe.name + recipe.description + searchIngredients;
+
     if(currentSearch.length >=3){
-        let fullSearch = recipe.name + recipe.description;
-        recipe.ingredients.forEach(Element => fullSearch += Element.ingredient);
         matchesSearchItem = fullSearch.toLowerCase().includes(currentSearch);
     }
+
     return matchesSearchItem;
 });

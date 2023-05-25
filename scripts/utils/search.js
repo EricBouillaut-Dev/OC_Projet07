@@ -115,9 +115,7 @@ function searchRecipes(SearchItem, tags) {
     currentSearch = SearchItem.toLowerCase();
     if (
         currentSearch.length < 3 &&
-        tags.ingredients.length === 0 &&
-        tags.appareils.length === 0 &&
-        tags.ustensils.length === 0
+        tags.length === 0
       ) {
         updateRecipes(recipes);
         updateIngredientList(recipes);
@@ -125,39 +123,28 @@ function searchRecipes(SearchItem, tags) {
         updateUstensilList(recipes);
         return;
     }
-
     
     const matchingRecipes = recipes.filter(function(recipe) {
 
         // Algo de la recherche principale
         let matchesSearchItem = true;
+        const searchIngredients = recipe.ingredients.map(element => element.ingredient);
+        const fullSearch = recipe.name + recipe.description + searchIngredients;
+
         if(currentSearch.length >=3){
-            let fullSearch = recipe.name + recipe.description;
-            recipe.ingredients.forEach(Element => fullSearch += Element.ingredient);
             matchesSearchItem = fullSearch.toLowerCase().includes(currentSearch);
         }
-        
-        // Algo de la recherche des tags ingredients
-        const matchesIngredients = tags.ingredients.every(function(tag) {
-            return recipe.ingredients.some(function(ingredient) {
-                return ingredient.ingredient.toLowerCase().includes(tag.toLowerCase());
-            });
-        });
 
-        // Algo de la recherche des tags appareils
-        const matchesAppliances = tags.appareils.every(function(tag) {
-            return recipe.appliance.toLowerCase().includes(tag.toLowerCase());
+        // Algo de la recherche des tags
+        const searchUstensils = recipe.ustensils.map(Element => Element);
+        const fullSearchTags = searchIngredients + recipe.appliance + searchUstensils;
+
+        const matchesTags = tags.every(function(tag) {
+            return fullSearchTags.toLowerCase().includes(tag.toLowerCase());
         });
     
-        // Algo de la recherche des tags ustensils
-        const matchesUstensils = tags.ustensils.every(function(tag) {
-            return recipe.ustensils.some(function(ustensil) {
-                return ustensil.toLowerCase().includes(tag.toLowerCase());
-            });
-        });
-    
-        // On retourne un booléen de toutes les conditions pour sélectionner la recette ou non 
-        return matchesSearchItem && matchesIngredients && matchesAppliances && matchesUstensils;
+        // On retourne un booléen du résultat des conditions pour sélectionner ou non la recette 
+        return matchesSearchItem && matchesTags;
     });
 
     // Mise à jour des menus déroulants et de l'affichage des recettes

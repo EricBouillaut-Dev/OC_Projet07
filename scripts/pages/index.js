@@ -10,10 +10,10 @@ function createTag(text, type) {
         <span class="cancel">
         </span>
     `;
-    const isTagSelected = tags[type].includes(text);
+    const isTagSelected = tags.includes(text);
     if (!isTagSelected) {
       tagContainer.appendChild(buttonTag);
-      tags[type].push(text);
+      tags.push(text);
       searchRecipes(currentSearch, tags);
     }
 }
@@ -44,11 +44,7 @@ function showDropdownDatas(dropdownButton, data) {
 }
 
 // Initialisation des variables
-let tags = {
-    ingredients: [],
-    appareils: [],
-    ustensils: []
-};
+let tags = [];
 let currentSearch = '';
 
 searchRecipes(currentSearch,tags); // Affichage de toutes les recettes lors de l'ouverture de la page
@@ -84,24 +80,26 @@ main.addEventListener('click', event => {
     if (event.target.className === 'cancel') {
         const parentTag = event.target.parentElement;
         const tagToRemove = parentTag.firstElementChild.innerText;
-        
+        const tagIndex = tags.indexOf(tagToRemove);
+        tags.splice(tagIndex, 1);
+
         // Vérification la classe du parent pour déterminer la propriété correspondante au tag
-        if (parentTag.classList.contains('ingredients')) {
-            const tagIndex = tags.ingredients.indexOf(tagToRemove);
-            if (tagIndex !== -1) {
-                tags.ingredients.splice(tagIndex, 1);
-            }
-        } else if (parentTag.classList.contains('appareils')) {
-            const tagIndex = tags.appareils.indexOf(tagToRemove);
-            if (tagIndex !== -1) {
-                tags.appareils.splice(tagIndex, 1);
-            }
-        } else if (parentTag.classList.contains('ustensils')) {
-            const tagIndex = tags.ustensils.indexOf(tagToRemove);
-            if (tagIndex !== -1) {
-                tags.ustensils.splice(tagIndex, 1);
-            }
-        }
+        // if (parentTag.classList.contains('ingredients')) {
+        //     const tagIndex = tags.ingredients.indexOf(tagToRemove);
+        //     if (tagIndex !== -1) {
+        //         tags.ingredients.splice(tagIndex, 1);
+        //     }
+        // } else if (parentTag.classList.contains('appareils')) {
+        //     const tagIndex = tags.appareils.indexOf(tagToRemove);
+        //     if (tagIndex !== -1) {
+        //         tags.appareils.splice(tagIndex, 1);
+        //     }
+        // } else if (parentTag.classList.contains('ustensils')) {
+        //     const tagIndex = tags.ustensils.indexOf(tagToRemove);
+        //     if (tagIndex !== -1) {
+        //         tags.ustensils.splice(tagIndex, 1);
+        //     }
+        // }
 
         parentTag.remove(); // Suppression du tag
         searchRecipes(currentSearch, tags); // Mise à jour des recettes sans le tag
