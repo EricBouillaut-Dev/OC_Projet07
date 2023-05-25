@@ -4,15 +4,15 @@ while (i < recipes.length) {
     const recipe = recipes[i];
 
     let matchesSearchItem = false;
-    if(SearchItem.length < 3){
+    if(currentSearch.length < 3){
         matchesSearchItem = true;
     }else{
         let element = recipe.name.toLowerCase();
         let j = 0;
         let k = 0;
       
-        while (j < element.length && k < SearchItem.length) {
-            if (element[j] === SearchItem[k]) {
+        while (j < element.length && k < currentSearch.length) {
+            if (element[j] === currentSearch[k]) {
                 k++;
             } else {
                 k = 0;
@@ -20,15 +20,15 @@ while (i < recipes.length) {
             j++;
         }
 
-        if (k === SearchItem.length) {
+        if (k === currentSearch.length) {
             matchesSearchItem = true;
         }else{
             element = recipe.description.toLowerCase();
             j = 0;
             k = 0;
       
-            while (j < element.length && k < SearchItem.length) {
-                if (element[j] === SearchItem[k]) {
+            while (j < element.length && k < currentSearch.length) {
+                if (element[j] === currentSearch[k]) {
                     k++;
                 } else {
                     k = 0;
@@ -36,7 +36,7 @@ while (i < recipes.length) {
                 j++;
             }
       
-            if (k === SearchItem.length) {
+            if (k === currentSearch.length) {
                 matchesSearchItem = true;
             }else{
                 let j = 0;
@@ -46,8 +46,8 @@ while (i < recipes.length) {
                     l = 0;
                     k = 0;
               
-                    while (l < element.length && k < SearchItem.length) {
-                        if (element[l] === SearchItem[k]) {
+                    while (l < element.length && k < currentSearch.length) {
+                        if (element[l] === currentSearch[k]) {
                             k++;
                         } else {
                             k = 0;
@@ -55,7 +55,7 @@ while (i < recipes.length) {
                         l++;
                     }
               
-                    if (k === SearchItem.length) {
+                    if (k === currentSearch.length) {
                         matchesSearchItem = true;
                     }
                     j++;

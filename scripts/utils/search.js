@@ -1,6 +1,7 @@
+// Mise à jour de la liste des ingrédients du menu déroulant
 function updateIngredientList(recipes) {
     const listIngredients = document.querySelector('.list-ingredients');
-    listIngredients.innerHTML = ''; // Effacer le contenu existant
+    listIngredients.innerHTML = '';
 
     const allIngredients = [];
     recipes.forEach(function(recipe) {
@@ -18,9 +19,10 @@ function updateIngredientList(recipes) {
     });
 }
 
+// Mise à jour de la liste des appareils du menu déroulant
 function updateApplianceList(recipes) {
     const listAppliances = document.querySelector('.list-appareils');
-    listAppliances.innerHTML = ''; // Effacer le contenu existant
+    listAppliances.innerHTML = '';
 
     const allAppliances = [];
     recipes.forEach(function(recipe) {
@@ -36,9 +38,10 @@ function updateApplianceList(recipes) {
     });
 }
 
+// Mise à jour de la liste des ustensils du menu déroulant
 function updateUstensilList(recipes) {
     const listUstensils = document.querySelector('.list-ustensils');
-    listUstensils.innerHTML = ''; // Effacer le contenu existant
+    listUstensils.innerHTML = '';
 
     const allUstensils = [];
     recipes.forEach(function(recipe) {
@@ -56,6 +59,7 @@ function updateUstensilList(recipes) {
     });
 }
 
+// Mise à jour de l'affichage de la liste des recettes
 function updateRecipes(recipes) {
     const recipesCount = recipes.length;
     const recipesCountText = document.querySelector('.recipes-count');
@@ -66,9 +70,8 @@ function updateRecipes(recipes) {
         recipesCountText.innerHTML = `<b>${recipesCount}</b> recette(s) trouvée(s):`;
     }
 
-    // Mettre à jour la liste des recettes affichées
     const recipesSection = document.querySelector('.recipes-section');
-    recipesSection.innerHTML = ''; // Effacer le contenu existant
+    recipesSection.innerHTML = '';
 
     recipes.forEach(function(recipe) {
         const article = document.createElement('article');
@@ -107,11 +110,11 @@ function updateRecipes(recipes) {
     });
 }
 
+// Filtrer les recettes correspondant à la recherche
 function searchRecipes(SearchItem, tags) {
-    currentSearch = SearchItem;
-    // Filtrer les recettes correspondant à la recherche
+    currentSearch = SearchItem.toLowerCase();
     if (
-        SearchItem.length < 3 &&
+        currentSearch.length < 3 &&
         tags.ingredients.length === 0 &&
         tags.appareils.length === 0 &&
         tags.ustensils.length === 0
@@ -122,38 +125,42 @@ function searchRecipes(SearchItem, tags) {
         updateUstensilList(recipes);
         return;
     }
-    const matchingRecipes = recipes.filter(function(recipe) {
-        let matchesSearchItem = true;
-        if(SearchItem.length >=3){
-            matchesSearchItem = (
-                recipe.name.toLowerCase().includes(SearchItem) ||
-                recipe.ingredients.some(function(ingredient) {
-                    return ingredient.ingredient.toLowerCase().includes(SearchItem);
-                }) ||
-                recipe.description.toLowerCase().includes(SearchItem)
-            );
-        }
+
     
+    const matchingRecipes = recipes.filter(function(recipe) {
+
+        // Algo de la recherche principale
+        let matchesSearchItem = true;
+        if(currentSearch.length >=3){
+            let fullSearch = recipe.name + recipe.description;
+            recipe.ingredients.forEach(Element => fullSearch += Element.ingredient);
+            matchesSearchItem = fullSearch.toLowerCase().includes(currentSearch);
+        }
+        
+        // Algo de la recherche des tags ingredients
         const matchesIngredients = tags.ingredients.every(function(tag) {
             return recipe.ingredients.some(function(ingredient) {
                 return ingredient.ingredient.toLowerCase().includes(tag.toLowerCase());
             });
         });
 
+        // Algo de la recherche des tags appareils
         const matchesAppliances = tags.appareils.every(function(tag) {
             return recipe.appliance.toLowerCase().includes(tag.toLowerCase());
         });
     
+        // Algo de la recherche des tags ustensils
         const matchesUstensils = tags.ustensils.every(function(tag) {
             return recipe.ustensils.some(function(ustensil) {
                 return ustensil.toLowerCase().includes(tag.toLowerCase());
             });
         });
     
+        // On retourne un booléen de toutes les conditions pour sélectionner la recette ou non 
         return matchesSearchItem && matchesIngredients && matchesAppliances && matchesUstensils;
     });
 
-    // Mettre à jour les menus déroulants et la liste des ingrédients, appareils et ustensiles
+    // Mise à jour des menus déroulants et de l'affichage des recettes
     updateRecipes(matchingRecipes);
     updateIngredientList(matchingRecipes);
     updateApplianceList(matchingRecipes);

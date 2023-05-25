@@ -1,13 +1,9 @@
 const matchingRecipes = recipes.filter(function(recipe) {
     let matchesSearchItem = true;
-    if(SearchItem.length >=3){
-        matchesSearchItem = (
-            recipe.name.toLowerCase().includes(SearchItem) ||
-            recipe.ingredients.some(function(ingredient) {
-                return ingredient.ingredient.toLowerCase().includes(SearchItem);
-            }) ||
-            recipe.description.toLowerCase().includes(SearchItem)
-        );
+    if(currentSearch.length >=3){
+        let fullSearch = recipe.name + recipe.description;
+        recipe.ingredients.forEach(Element => fullSearch += Element.ingredient);
+        matchesSearchItem = fullSearch.toLowerCase().includes(currentSearch);
     }
-             return matchesSearchItem;
+    return matchesSearchItem;
 });
