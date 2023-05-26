@@ -6,7 +6,6 @@
 }
 html {
     min-width: 350px;
-    /* max-width: 1400px; */
     margin: 1rem;
     --title:#d04f4f;
     --primary: #3282f7;
@@ -33,7 +32,6 @@ header {
     margin: 0 1.5rem;
 }
 h1{
-    /* margin: 0; */
     color: var(--title);
 }
 form{
@@ -44,6 +42,11 @@ label{
     top: 1.2rem;
     right: 1rem;
 }
+
+/*---------------------------------
+-- Barre de recherche principale --
+-----------------------------------*/
+
 form input{
     width: 100%;
     height: 4.3rem;
@@ -52,15 +55,18 @@ form input{
     border-radius: 5px;
     background-color: var(--lightGray);
     border: none;
-    /* font-family: "Lato", sans-serif; */
 }
 ::placeholder{
     opacity: 0.5;
 }
 .fa-solid.fa-magnifying-glass{
     font-size: 1.8rem;
-    /* font-weight: bold; */
 }
+
+/*--------
+-- Tags --
+----------*/
+
 .tag-container{
     margin: 0 1.5rem;
     display: flex;
@@ -74,12 +80,9 @@ form input{
 }
 .tag{
     display: flex;
-    /* margin: 1rem 0; */
-    /* justify-content: left; */
     align-items: center;
     height: 2.3rem;
     padding: 1rem;
-    /* padding-right: 1rem; */
     color: white;
     border: none;
     border-radius: 5px;
@@ -99,6 +102,11 @@ form input{
     background-color: var(--tertiary);
     margin-bottom: 1rem;
 }
+
+/*--------------------------
+-- Bouton cancel des tags --
+----------------------------*/
+
 .cancel {
     width: 20px;
     height: 20px;
@@ -118,7 +126,9 @@ form input{
     cursor: pointer;
 }
 
-
+/*--------------------
+-- Menus déroulants --
+----------------------*/
 
 .dropdown{
     display: flex;
@@ -130,9 +140,7 @@ form input{
     position: relative;
     display: flex;
     flex-direction: column;
-    /* margin: 0; */
     margin-right: 1rem;
-    /* width: 170px; */
 }
 .dropdown input {
     display: flex;
@@ -147,7 +155,6 @@ form input{
     font-size: 18px;
     width: 170px;
     transition: width 0.2s ease-out;
-    /* transition-delay: 0.2s; */
     cursor: pointer;
 }
 
@@ -169,17 +176,6 @@ form input{
 }
 .dropdown input.active::placeholder {
     opacity: 0.5;
-    /* color: black; */
-}
-
-.button-ingredients{
-    background-color: var(--primary);
-}
-.button-appareils{
-    background-color: var(--secondary);
-}
-.button-ustensils{
-    background-color: var(--tertiary);
 }
 .dropdown input:focus {
     outline: none;
@@ -192,14 +188,6 @@ form input{
     width: 650px;
     transition: width 0.2s ease-out;
 }
-
-/* .dropdown ul {
-    display: none;
-    justify-content: space-between;
-    margin: 0;
-    padding: 0;
-    border-radius: 0 0 5px 5px;
-} */
 
 .dropdown ul {
     position: absolute;
@@ -215,8 +203,6 @@ form input{
     color: white;
     font-size: 18px;
     font-weight: 400;
-    /* transition: max-height 0.2s ease-out; */
-    /* transition-delay: 0.2s; */
 }
 .dropdown ul::-webkit-scrollbar {
     width: 8px;
@@ -235,18 +221,28 @@ form input{
     background-color: #ddd;
 }
 
-
-
-
-
-
 .dropdown ul.active{
     display: flex;
     z-index: 1;
-    /* max-height: 400px; */
-    /* transition: max-height 0.2s ease-out; */
-    /* transition-delay: 0.2s; */
 }
+
+/*-------------------------------
+-- Boutons des menus déroulants --
+---------------------------------*/
+
+.button-ingredients{
+    background-color: var(--primary);
+}
+.button-appareils{
+    background-color: var(--secondary);
+}
+.button-ustensils{
+    background-color: var(--tertiary);
+}
+
+/*-------------------------------
+-- Listes des menus déroulants --
+---------------------------------*/
 
 .list-ingredients{
     background-color: var(--primary);
@@ -282,7 +278,14 @@ form input{
     cursor: pointer;
     border-radius: 5px;
 }
-    
+.hidden{
+    display: none;
+}
+
+/*------------
+-- Recettes --
+--------------*/
+
 .recipes-section{
     display: flex;
     flex-wrap: wrap;
@@ -292,7 +295,6 @@ form input{
     flex-direction: column;
     padding: 1rem;
     margin: 0.5rem;
-    /* height: 360px; */
 }
 .recipe-info-up{
     width: 380px;
@@ -302,13 +304,10 @@ form input{
 }
 .recipe-info-middle{
     display: flex;
-    /* flex-direction: column; */
     justify-content: space-between;
     background-color: var(--lightGray);
-    /* margin: 0; */
     padding: 1rem 1rem 0 1rem;
     width: 380px;
-    /* height: 40px; */
 }
 .recipe-info-down{
     display: flex;
@@ -326,12 +325,10 @@ form input{
 }
 .recipe-info-left{
     font-size: 12px;
-    /* font-weight: bold; */
 }
 .recipe-name{
     font-size: 18px;
     font-weight: normal;
-    /* flex-basis: 50%; */
 }
 .recipe-description{
     position: absolute;
@@ -353,7 +350,6 @@ form input{
     -webkit-box-orient: initial;
     padding: 0.5rem;
     left: -200px;
-    /* bottom: 50px; */
     height: auto;
     width: 400px;
     background-color: white;
@@ -373,11 +369,7 @@ form input{
     content: '\f017';
     font-family: "Font Awesome 5 Free";
     font-weight: normal;
-    /* font-style: bold; */
     padding-right: 0.3rem;
-}
-.hidden{
-    display: none;
 }
 .recipe-info-middle,
 .recipe-info-down{
@@ -390,5 +382,4 @@ form input{
 .recipes-count{
     position: absolute;
     margin-left: 1.5rem;
-    /* color: var(--title); */
 }

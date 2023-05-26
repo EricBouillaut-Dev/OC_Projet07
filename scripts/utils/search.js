@@ -110,8 +110,9 @@ function updateRecipes(recipes) {
     });
 }
 
-function searchTags(searchTag) {
-    const allTags = document.querySelectorAll('li');
+// Filtrer les tags correspondants à la recherche
+function searchTags(searchTag, blocTag) {
+    const allTags = blocTag.querySelectorAll('li');
   
     allTags.forEach(liElement => {
       const liText = liElement.textContent.toLowerCase();
@@ -124,7 +125,7 @@ function searchTags(searchTag) {
     });
 }
 
-// Filtrer les recettes correspondant à la recherche
+// Filtre les recettes correspondantes à la recherche
 function searchRecipes(SearchItem, tags) {
     currentSearch = SearchItem.toLowerCase();
     if (
@@ -138,6 +139,7 @@ function searchRecipes(SearchItem, tags) {
         return;
     }
     
+    // Filtre de sélection des rectettes
     const matchingRecipes = recipes.filter(function(recipe) {
 
         // Algo de la recherche principale

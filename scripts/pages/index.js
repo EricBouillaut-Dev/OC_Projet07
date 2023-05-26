@@ -19,29 +19,38 @@ function createTag(text, type) {
 }
 
 // Affichage des menus déroulants
-function showDropdownDatas(dropdownButton, data) {
-    const dataReplace = data.toLowerCase();
-    const dropdownList = document.querySelector(`.list-${dataReplace}`);
-    const blocItems = document.querySelector(`.bloc-${dataReplace}`);
+function showDropdownDatas(dropdownButton) {
+    const base = dropdownButton.className.replace('button-', '');
+    const data = base.charAt(0).toUpperCase() + base.slice(1);
+    const dataReplace = data.toLowerCase().slice(0, -1);
+    const dropdownList = dropdownButton.nextElementSibling.nextElementSibling;
+    const blocItems = dropdownButton.parentElement;
+ 
+    // On affiche le menu déroulant
     dropdownButton.classList.toggle('active');
     dropdownList.classList.toggle('active');
 
+    // Evennement si le curseur de la souris sort du menu déroulant
     blocItems.addEventListener('mouseleave', () => {
-        dropdownButton.classList.remove('active');
-        dropdownList.classList.remove('active');
-        dropdownButton.placeholder = `${data}`;
-        dropdownButton.value = '';
-        dropdownButton.blur();
-        searchTags('');
+      dropdownButton.classList.remove('active');
+      dropdownList.classList.remove('active');
+      resetDropdown(dropdownButton, data, blocItems);
     });
-
+  
+    // On sort du menu déroulant si on re-clique sur le bouton
     if (dropdownButton.classList.contains('active')) {
-        dropdownButton.placeholder = `Rechercher un ${dataReplace.slice(0, -1)}`;
+      dropdownButton.placeholder = `Rechercher un ${dataReplace}`;
     } else {
-        dropdownButton.placeholder = `${data}`;
-        dropdownButton.value = '';
-        dropdownButton.blur();
+      resetDropdown(dropdownButton, data, blocItems);
     }
+}
+
+// Reset du menu déroulant lorsqu'on le quitte
+function resetDropdown(dropdownButton, data, blocItems) {
+    dropdownButton.placeholder = `${data.split(' ')[0]}`;
+    dropdownButton.value = '';
+    dropdownButton.blur();
+    searchTags('', blocItems);
 }
 
 // Initialisation des variables
@@ -59,21 +68,16 @@ searchInput.addEventListener('input', function(event) {
 
 const searchTagInput = document.querySelector('.dropdown-container');
 searchTagInput.addEventListener('input', function(event) {
+    const parentInput = event.target.parentElement;
     const searchTerm = event.target.value.toLowerCase();
-    searchTags(searchTerm);
+    searchTags(searchTerm, parentInput);
 });
 
 // Evennement 'click' sur tout le 'main'
 const main = document.getElementById('main');
 main.addEventListener('click', event => {
-    if (event.target.classList.contains('button-ingredients')) {
-        showDropdownDatas(event.target, 'Ingredients'); // Click sur le menu déroulant 'Ingrediants'
-    }
-    if (event.target.classList.contains('button-appareils')) {
-        showDropdownDatas(event.target, 'Appareils'); // Click sur le menu déroulant 'Appareils'
-    }
-    if (event.target.classList.contains('button-ustensils')) {
-        showDropdownDatas(event.target, 'Ustensils'); // Click sur le menu déroulant 'Ustensils'
+    if (event.target.className.includes('button')) {
+        showDropdownDatas(event.target); // Click sur un menu déroulant
     }
 
     // Click sur le contenu des menu déroulants
