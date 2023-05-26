@@ -37,7 +37,7 @@ h1{
 form{
     position: relative;
 }
-label{
+.fa-solid.fa-magnifying-glass{
     position: absolute;
     top: 1.2rem;
     right: 1rem;
