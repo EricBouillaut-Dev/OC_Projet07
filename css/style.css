@@ -376,7 +376,9 @@ form input{
     /* font-style: bold; */
     padding-right: 0.3rem;
 }
-
+.hidden{
+    display: none;
+}
 .recipe-info-middle,
 .recipe-info-down{
     cursor: pointer;

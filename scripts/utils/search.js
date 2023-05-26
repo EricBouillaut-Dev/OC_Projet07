@@ -110,6 +110,20 @@ function updateRecipes(recipes) {
     });
 }
 
+function searchTags(searchTag) {
+    const allTags = document.querySelectorAll('li');
+  
+    allTags.forEach(liElement => {
+      const liText = liElement.textContent.toLowerCase();
+  
+      if (!liText.includes(searchTag)) {
+        liElement.className = 'hidden';
+      }else{
+        liElement.removeAttribute('class');
+      }
+    });
+}
+
 // Filtrer les recettes correspondant à la recherche
 function searchRecipes(SearchItem, tags) {
     currentSearch = SearchItem.toLowerCase();

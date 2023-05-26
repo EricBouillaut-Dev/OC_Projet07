@@ -32,6 +32,7 @@ function showDropdownDatas(dropdownButton, data) {
         dropdownButton.placeholder = `${data}`;
         dropdownButton.value = '';
         dropdownButton.blur();
+        searchTags('');
     });
 
     if (dropdownButton.classList.contains('active')) {
@@ -54,6 +55,12 @@ const searchInput = document.getElementById('search');
 searchInput.addEventListener('input', function(event) {
     const searchTerm = event.target.value.toLowerCase();
     searchRecipes(searchTerm, tags);
+});
+
+const searchTagInput = document.querySelector('.dropdown-container');
+searchTagInput.addEventListener('input', function(event) {
+    const searchTerm = event.target.value.toLowerCase();
+    searchTags(searchTerm);
 });
 
 // Evennement 'click' sur tout le 'main'
@@ -82,24 +89,6 @@ main.addEventListener('click', event => {
         const tagToRemove = parentTag.firstElementChild.innerText;
         const tagIndex = tags.indexOf(tagToRemove);
         tags.splice(tagIndex, 1);
-
-        // Vérification la classe du parent pour déterminer la propriété correspondante au tag
-        // if (parentTag.classList.contains('ingredients')) {
-        //     const tagIndex = tags.ingredients.indexOf(tagToRemove);
-        //     if (tagIndex !== -1) {
-        //         tags.ingredients.splice(tagIndex, 1);
-        //     }
-        // } else if (parentTag.classList.contains('appareils')) {
-        //     const tagIndex = tags.appareils.indexOf(tagToRemove);
-        //     if (tagIndex !== -1) {
-        //         tags.appareils.splice(tagIndex, 1);
-        //     }
-        // } else if (parentTag.classList.contains('ustensils')) {
-        //     const tagIndex = tags.ustensils.indexOf(tagToRemove);
-        //     if (tagIndex !== -1) {
-        //         tags.ustensils.splice(tagIndex, 1);
-        //     }
-        // }
 
         parentTag.remove(); // Suppression du tag
         searchRecipes(currentSearch, tags); // Mise à jour des recettes sans le tag
