@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -19,7 +19,7 @@
         <h1>Les petits plats</h1>
     </header>
     <main id="main">
-        <section class="search-section" role="region" aria-label="Recherche de recette">
+        <section class="search-section">
             <form action="#">
                 <input type="text" id="search" placeholder="Rechercher une recette">
                 <label for="search">
@@ -27,7 +27,7 @@
                 </label>
             </form>
         </section>
-        <section class="tag-container" role="region" aria-label="Tags">
+        <section class="tag-container">
             <article class="tag-container__ingredients">
             </article>
             <article class="tag-container__appareils">
@@ -64,7 +64,81 @@
     <script src="scripts/pages/index.js"></script>
 </body>
 
-<footer>
-</footer>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="assets/logo/logo.png">
+    <link
+        href="https://fonts.googleapis.com/css?family=Lato:wght@100;300;400;700;900&Roboto:wght@100;300;400;700;900&family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8c5af481df.js" crossorigin="anonymous"></script>
+    <title>Les petits plats</title>
+</head>
+
+<body>
+    <header>
+        <img alt="logo" src="./assets/logo/logo.png">
+        <h1>Les petits plats</h1>
+    </header>
+    <main id="main">
+        <section class="search-section">
+            <form action="#">
+                <label for="search">
+                    <span class="sr-only">Rechercher une recette</span>
+                </label>
+                <input type="text" id="search" role="searchbox" placeholder="Rechercher une recette">
+                <button type="submit" class="search-button" aria-label="Rechercher">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+        </section>
+        <section class="tag-container">
+            <article class="tag-container__ingredients" aria-label="Ingrédients sélectionnés">
+            </article>
+            <article class="tag-container__appareils" aria-label="Appareils sélectionnés">
+            </article>
+            <article class="tag-container__ustensils" aria-label="Ustensiles sélectionnés">
+            </article>
+        </section>
+        <section class="dropdown-container">
+            <div class="dropdown">
+                <article class="bloc-ingredients">
+                    <input type="text" class="button-ingredients" role="combobox" aria-haspopup="true"
+                        aria-expanded="false" aria-controls="list-ingredients" placeholder="Ingredients">
+                    <span class="dropdown-chevron" aria-hidden="true"></span>
+                    <ul id="list-ingredients" class="list-ingredients" role="listbox" aria-label="Liste des ingrédients"
+                        aria-expanded="false"></ul>
+                </article>
+                <article class="bloc-appareils">
+                    <input type="text" class="button-appareils" role="combobox" aria-haspopup="true"
+                        aria-expanded="false" aria-controls="list-appareils" placeholder="Appareils">
+                    <span class="dropdown-chevron" aria-hidden="true"></span>
+                    <ul id="list-appareils" class="list-appareils" role="listbox" aria-label="Liste des appareils"
+                        aria-expanded="false"></ul>
+                </article>
+                <article class="bloc-ustensils">
+                    <input type="text" class="button-ustensils" role="combobox" aria-haspopup="true"
+                        aria-expanded="false" aria-controls="list-ustensils" placeholder="Ustensils">
+                    <span class="dropdown-chevron" aria-hidden="true"></span>
+                    <ul id="list-ustensils" class="list-ustensils" role="listbox" aria-label="Liste des ustensiles"
+                        aria-expanded="false"></ul>
+                </article>
+            </div>
+        </section>
+        <section class="recipes-found">
+            <span class="recipes-count" role="status" aria-live="polite">50 recettes:</span>
+            <div class="recipes-section" aria-live="polite"></div>
+        </section>
+    </main>
+    <script src="scripts/data/recipes.js"></script>
+    <script src="scripts/utils/search.js"></script>
+    <script src="scripts/pages/index.js"></script>
+</body>
 
 </html>
