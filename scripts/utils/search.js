@@ -141,6 +141,7 @@ function searchRecipes(searchTerm, tags) {
         return;
     }
 
+    // Algo de recherche principale (while)
     const matchingRecipes = [];
     const search = currentSearch.toLowerCase();
     let i = 0;
@@ -151,13 +152,14 @@ function searchRecipes(searchTerm, tags) {
         if (search.length < 3) {
             matchesSearchItem = true;
         } else {
-            const searchIngredients = [];
+            let searchIngredients = '';
             let j = 0;
             while (j < recipe.ingredients.length) {
-                searchIngredients.push(recipe.ingredients[j].ingredient);
+                searchIngredients += (recipe.ingredients[j].ingredient);
                 j++;
             }
-            const fullSearch = (recipe.name + recipe.description + searchIngredients.join(' ')).toLowerCase();
+            const fullSearch = (recipe.name + recipe.description + searchIngredients).toLowerCase();
+            console.log(fullSearch);
             let k = 0;
             let l = 0;
     
@@ -174,6 +176,8 @@ function searchRecipes(searchTerm, tags) {
                 matchesSearchItem = true;
             }
         }
+
+        // Algo de recherche tags (while)
         let matchesTags = true;
         let m = 0;
         while (matchesTags && m < tags.length) {
