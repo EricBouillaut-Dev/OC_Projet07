@@ -4,9 +4,8 @@ const matchingRecipes = recipes.filter(function(recipe) {
     const fullSearch = recipe.name + recipe.description + searchIngredients;
 
     if(currentSearch.length >=3){
-        matchesSearchItem = fullSearch.toLowerCase().includes(currentSearch);
+        matchesSearchItem = fullSearch.toLowerCase().includes(currentSearch.toLowerCase);
     }
-
 
     return matchesSearchItem;
 });

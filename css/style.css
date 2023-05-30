@@ -72,7 +72,6 @@ form input{
     margin: 0 1.5rem;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     gap: 1rem;
 }
 .tag-container article{
