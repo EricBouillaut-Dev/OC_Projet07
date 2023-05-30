@@ -21,14 +21,14 @@ while (i < recipes.length) {
         while (k < fullSearch.length && l < search.length) {
             if (fullSearch[k] === search[l]) {
                 l++;
+                if (l === search.length) {
+                    matchesSearchItem = true;
+                    break;
+                }
             } else {
                 l = 0;
             }
             k++;
-        }
-
-        if (l === search.length) {
-            matchesSearchItem = true;
         }
     }
     if (matchesSearchItem) {

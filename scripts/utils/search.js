@@ -152,28 +152,27 @@ function searchRecipes(searchTerm, tags) {
         if (search.length < 3) {
             matchesSearchItem = true;
         } else {
-            let searchIngredients = '';
+            const searchIngredients = [];
             let j = 0;
             while (j < recipe.ingredients.length) {
-                searchIngredients += (recipe.ingredients[j].ingredient);
+                searchIngredients.push(recipe.ingredients[j].ingredient);
                 j++;
             }
-            const fullSearch = (recipe.name + recipe.description + searchIngredients).toLowerCase();
-            console.log(fullSearch);
+            const fullSearch = (recipe.name + recipe.description + searchIngredients.join(' ')).toLowerCase();
             let k = 0;
             let l = 0;
     
             while (k < fullSearch.length && l < search.length) {
                 if (fullSearch[k] === search[l]) {
                     l++;
+                    if (l === search.length) {
+                        matchesSearchItem = true;
+                        break; // Sortie de la boucle while dès que la correspondance est trouvée
+                    }
                 } else {
                     l = 0;
                 }
                 k++;
-            }
-    
-            if (l === search.length) {
-                matchesSearchItem = true;
             }
         }
 
