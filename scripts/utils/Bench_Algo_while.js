@@ -15,20 +15,9 @@ while (i < recipes.length) {
             j++;
         }
         const fullSearch = (recipe.name + recipe.description + searchIngredients.join(' ')).toLowerCase();
-        let k = 0;
-        let l = 0;
 
-        while (k < fullSearch.length && l < search.length) {
-            if (fullSearch[k] === search[l]) {
-                l++;
-                if (l === search.length) {
-                    matchesSearchItem = true;
-                    break;
-                }
-            } else {
-                l = 0;
-            }
-            k++;
+        if (fullSearch.includes(search)) {
+            matchesSearchItem = true;
         }
     }
     if (matchesSearchItem) {
