@@ -159,23 +159,11 @@ function searchRecipes(searchTerm, tags) {
                 j++;
             }
             const fullSearch = (recipe.name + recipe.description + searchIngredients.join(' ')).toLowerCase();
-            let k = 0;
-            let l = 0;
     
-            while (k < fullSearch.length && l < search.length) {
-                if (fullSearch[k] === search[l]) {
-                    l++;
-                    if (l === search.length) {
-                        matchesSearchItem = true;
-                        break; // Sortie de la boucle while dès que la correspondance est trouvée
-                    }
-                } else {
-                    l = 0;
-                }
-                k++;
+            if (fullSearch.includes(search)) {
+                matchesSearchItem = true;
             }
         }
-
         // Algo de recherche tags (while)
         let matchesTags = true;
         let m = 0;
